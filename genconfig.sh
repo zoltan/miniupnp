@@ -157,6 +157,7 @@ case $OS_NAME in
 			elif checkyesno ipfilter; then
 				FW=ipf
 			fi
+			FW=npf
 		fi
 		if [ -z $FW ] ; then
 			echo "Could not detect ipf nor pf, defaulting to pf."
@@ -280,6 +281,9 @@ case $FW in
 		;;
 	ipfw)
 		echo "#define USE_IPFW 1" >> ${CONFIGFILE}
+		;;
+	npf)
+		echo "#define USE_NPF 1" >> ${CONFIGFILE}
 		;;
 	netfilter)
 		echo "#define USE_NETFILTER 1" >> ${CONFIGFILE}

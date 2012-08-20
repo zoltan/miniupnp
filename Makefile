@@ -17,7 +17,7 @@
 
 CFLAGS ?= -pipe -Os
 #CFLAGS = -pipe -O -g -DDEBUG
-CFLAGS += -ansi
+#CFLAGS += -ansi
 CFLAGS += -Wall
 CFLAGS += -W
 CFLAGS += -Wstrict-prototypes
@@ -36,6 +36,8 @@ ARCH != uname -m
 .ifndef FWNAME
 .if exists(/usr/include/net/pfvar.h)
 FWNAME = pf
+.elif exists(/usr/include/net/npf.h)
+FWNAME = npf
 .else
 FWNAME = ipf
 .endif
@@ -87,6 +89,7 @@ MACOBJS = mac/getifstats.o bsd/ifacewatcher.o
 PFOBJS = pf/obsdrdr.o pf/pfpinhole.o
 IPFOBJS = ipf/ipfrdr.o
 IPFWOBJS = ipfw/ipfwrdr.o
+NPFOBJS = npf/npfrdr.o
 MISCOBJS = upnpreplyparse.o minixml.o
 
 ALLOBJS = $(STDOBJS) $(MISCOBJS)
@@ -105,6 +108,8 @@ TESTGETIFSTATSOBJS = testgetifstats.o bsd/getifstats.o
 ALLOBJS += $(PFOBJS)
 .elif $(FWNAME) == "ipfw"
 ALLOBJS += $(IPFWOBJS)
+.elif $(FWNAME) == "npf"
+ALLOBJS += $(NPFOBJS)
 .else
 ALLOBJS += $(IPFOBJS)
 .endif
