@@ -130,6 +130,9 @@ LIBS = -lkvm
 .if $(OSNAME) == "SunOS"
 LIBS += -lsocket -lnsl -lkstat -lresolv
 .endif
+.if $(FWNAME) == "npf"
+LIBS += -lnpf
+.endif
 
 # set PREFIX variable to install in the wanted place
 

@@ -26,7 +26,7 @@ int add_filter_rule2(
  * get_redirect_rule() gets internal IP and port from
  * interface, external port and protocl
 */
-int get_redirect_rule(
+/*int get_redirect_rule(
         const char * ifname,
         unsigned short eport,
         int proto,
@@ -50,8 +50,7 @@ int get_redirect_rule_by_index(
         int desclen,
         u_int64_t * packets,
         u_int64_t * bytes);
-
-#endif
+*/
 
 /*
  * delete_redirect_rule()

@@ -35,6 +35,9 @@
 #if defined(USE_IPFW)
 #include "ipfw/ipfwrdr.h"
 #endif
+#if defined(USE_NPF)
+#include "npf/npfrdr.h"
+#endif
 #ifdef USE_MINIUPNPDCTL
 #include <stdio.h>
 #include <unistd.h>
